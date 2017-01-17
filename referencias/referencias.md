@@ -19,4 +19,4 @@
 
 * <a href='https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwiutrPXm8jRAhUD62MKHalwDIsQFggdMAA&url=http%3A%2F%2Fstatweb.stanford.edu%2F~tibs%2FElemStatLearn%2Fprintings%2FESLII_print10.pdf&usg=AFQjCNEAqok1DelzqAL7AcGBXOWCB4RWNg&sig2=5oURTYhlEXSS7OHi_BnhWQ&bvm=bv.144224172,d.cGc'>Hastie et al (2010)</a>
 
-* <a href='https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjR5pbym8jRAhVB3mMKHaCdAnkQFggkMAE&url=http%3A%2F%2Fwww-bcf.usc.edu%2F~gareth%2FISL%2FISLR%2520First%2520Printing.pdf&usg=AFQjCNFJfPgDOLXt2YYiAjZ_a9a1LNLMMQ&sig2=ly9QsUMuWo-rBblvNhz9RA&bvm=bv.144224172,d.cGc'>James et al (2010)</a>
+* <a href='https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjR5pbym8jRAhVB3mMKHaCdAnkQFggkMAE&url=http%3A%2F%2Fwww-bcf.usc.edu%2F~gareth%2FISL%2FISLR%2520First%2520Printing.pdf&usg=AFQjCNFJfPgDOLXt2YYiAjZ_a9a1LNLMMQ&sig2=ly9QsUMuWo-rBblvNhz9RA&bvm=bv.144224172,d.cGc'>James et al (2013)</a>
