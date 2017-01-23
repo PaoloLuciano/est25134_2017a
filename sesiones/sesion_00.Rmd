@@ -1,0 +1,54 @@
+---
+title: "Sesión 00 - Introducción a R"
+author: "Juan Carlos Martinez-Ovando"
+date: "Primavera 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducción a R
+
+En este curso usaremos [RStudio](https://www.r-project.org/) para implementar los modelos que estudiaremos.  Les recomiendo que usen [RStudio](https://www.rstudio.com/) como editor para sus rutinas (siéntanse en libertad de emplear [Jupyter](http://jupyter.org/) o [Atom](https://atom.io/) si lo encuentran más conveniente).
+
+En estas notas revisaremos algunas de las funcionalidades más general de R. Empezaremos con la instalación de paquetes o librerias uqe utlizaremos a lo largo del curso. Desde RStudio stas librerias pueden instalarse empleando las siguientes instrucciones:
+
+```{r install_packages, eval=FALSE, include=FALSE}
+options("repos"="http://cran.itam.mx")
+
+upackages = c("repmis", "tidyr", "lubridate", "dplyr", "ggplot2")
+
+install.packages(upackages)
+```
+
+Descripción:
+\begin{itemize}
+ \item `repmis` - Importación de datos
+ \item `tidyr` - Manipulación de datos
+ \item `lubridate` - Manejo de datos remporales
+ \item `dplyr` - Manipulación y agregación de datos
+ \item `ggplot2` - Visualización de datos
+\end{itemize}
+
+```{r load_packages, echo=FALSE}
+library(lubridate)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+```
+
+### Manipulación de datos
+
+Cargamos los datos desde un repositorio en GitHUb (en este caso, el repositorio de datos de nuestro curso). Para esto, empleamos en RStudio el paquete `repmis`.
+
+
+```{r load_data, echo=FALSE}
+library(repmis)
+
+source_data("https://github.com/jcmartinezovando/est25134_2017a/blob/master/datos/AllstateClaim_DataShort.RData?raw=true")
+```
+
+Noten que debemos especificar el path de los datos desde el repositorio en GitHub; este lo pueden encontrar seleccionando la opción `Copy path` que se despliega al seleccionar cada archivo da datos.
+
