@@ -19,3 +19,4 @@ library(repmis)
 source_data("https://github.com/jcmartinezovando/est25134_2017a/blob/master/datos/AllstateClaim_DataShort.RData?raw=true")
 ```
 Noten que debemos especificar el path de los datos desde el repositorio en GitHub; este lo pueden encontrar seleccionando la opción `Copy path` que se despliega al seleccionar cada archivo da datos.
+
