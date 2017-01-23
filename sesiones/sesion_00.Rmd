@@ -24,13 +24,11 @@ install.packages(upackages)
 ```
 
 Descripción:
-\begin{itemize}
- \item `repmis` - Importación de datos
- \item `tidyr` - Manipulación de datos
- \item `lubridate` - Manejo de datos remporales
- \item `dplyr` - Manipulación y agregación de datos
- \item `ggplot2` - Visualización de datos
-\end{itemize}
+*  `repmis` - Importación de datos
+*  `tidyr` - Manipulación de datos
+*  `lubridate` - Manejo de datos remporales
+*  `dplyr` - Manipulación y agregación de datos
+*  `ggplot2` - Visualización de datos
 
 ```{r load_packages, echo=FALSE}
 library(lubridate)
