@@ -23,10 +23,10 @@ upackages = c("repmis", "tidyr", "lubridate", "dplyr", "ggplot2")
 install.packages(upackages)
 ```
 
-Descripción:
+Breve descripción de los paquetes:
 *  `repmis` - Importación de datos
 *  `tidyr` - Manipulación de datos
-*  `lubridate` - Manejo de datos remporales
+*  `lubridate` - Manejo de datos temporales
 *  `dplyr` - Manipulación y agregación de datos
 *  `ggplot2` - Visualización de datos
 
