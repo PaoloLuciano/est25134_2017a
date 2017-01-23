@@ -39,7 +39,7 @@ library(dplyr)
 
 ### Manipulación de datos
 
-Cargamos los datos desde un repositorio en GitHUb (en este caso, el repositorio de datos de nuestro curso). Para esto, empleamos en RStudio el paquete `repmis`.
+Cargamos los datos desde un repositorio en GitHUb (en este caso, el repositorio de datos de nuestro curso). Para esto, empleamos en RStudio el paquete `repmis`. Por ejemplo, para leer los datos de reclamos de seguros, empleamos:
 
 
 ```{r load_data, echo=FALSE}
@@ -48,5 +48,4 @@ library(repmis)
 source_data("https://github.com/jcmartinezovando/est25134_2017a/blob/master/datos/AllstateClaim_DataShort.RData?raw=true")
 ```
 
-Noten que debemos especificar el path de los datos desde el repositorio en GitHub; este lo pueden encontrar seleccionando la opción `Copy path` que se despliega al seleccionar cada archivo da datos.
-
+Noten que debemos especificar el path de los datos desde el repositorio en GitHub; este lo pueden encontrar seleccionando la opción `Copy path` que se despliega al seleccionar cada archivo da datos. Noten también la última instrucción para especificar que los datos son libres de formato. 
