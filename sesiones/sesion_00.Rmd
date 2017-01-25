@@ -1,5 +1,5 @@
 ---
-title: "Sesión 00 - Introducción a R"
+title: "S00 - Introducción a R"
 author: "Juan Carlos Martinez-Ovando"
 date: "Primavera 2017"
 output: html_document
@@ -15,7 +15,7 @@ En este curso usaremos [RStudio](https://www.r-project.org/) para implementar lo
 
 En estas notas revisaremos algunas de las funcionalidades más general de R. Empezaremos con la instalación de paquetes o librerias uqe utlizaremos a lo largo del curso. Desde RStudio stas librerias pueden instalarse empleando las siguientes instrucciones:
 
-```{r install_packages, eval=FALSE, include=FALSE}
+```
 options("repos"="http://cran.itam.mx")
 
 upackages = c("repmis", "tidyr", "lubridate", "dplyr", "ggplot2")
@@ -30,22 +30,43 @@ Breve descripción de los paquetes:
 *  `dplyr` - Manipulación y agregación de datos
 *  `ggplot2` - Visualización de datos
 
-```{r load_packages, echo=FALSE}
+```{r load_packages, echo=TRUE}
 library(lubridate)
 library(ggplot2)
 library(tidyr)
 library(dplyr)
 ```
 
-### Manipulación de datos
+### Importación de datos
 
-Cargamos los datos desde un repositorio en GitHUb (en este caso, el repositorio de datos de nuestro curso). Para esto, empleamos en RStudio el paquete `repmis`. Por ejemplo, para leer los datos de reclamos de seguros, empleamos:
+Cargamos los datos desde un repositorio en GitHUb (en este caso, el repositorio de datos de nuestro curso). Para esto, empleamos en RStudio el paquete `repmis`. Por ejemplo, para leer los datos de reclamos de seguros de viviendas en Dinamarca, empleamos:
 
 
-```{r load_data, echo=FALSE}
+```
 library(repmis)
 
-source_data("https://github.com/jcmartinezovando/est25134_2017a/blob/master/datos/AllstateClaim_DataShort.RData?raw=true")
+source_data("https://github.com/jcmartinezovando/est25134_2017a/blob/master/datos/DanishInsuranceMultivariate_Data.RData?raw=true")
 ```
 
-Noten que debemos especificar el path de los datos desde el repositorio en GitHub; este lo pueden encontrar seleccionando la opción `Copy path` que se despliega al seleccionar cada archivo da datos. Noten también la última instrucción para especificar que los datos son libres de formato. 
+Noten que debemos especificar el path de los datos desde el repositorio en GitHub; este lo pueden encontrar seleccionando la opción `Copy path` que se despliega al seleccionar cada archivo da datos. Empleando `repmis` es necesario que el path de datos sea `blob` Noten también la última instrucción para especificar que los datos son libres de formato. 
+También podemos cargar los datos en R empleando las siguientes opciones.
+
+```{r load_data2, echo=TRUE}
+rm(list=ls())
+githubURL <- "https://github.com/jcmartinezovando/est25134_2017a/raw/master/datos/DanishInsuranceMultivariate_Data.RData"
+
+# For Windows
+load(url(githubURL))
+
+# If trouble, try this on Linux or iOS
+download.file(githubURL,"DanishInsuranceMultivariate_Data")
+load("DanishInsuranceMultivariate_Data")
+ls()
+```
+Noten que en este caso, el path de datos debe ser del tipo `raw`. Es la instrucción análoga a la última que empleamos en `repmis`.
+
+La última opción es quizás la más conveniente, pues es autónoma de otras librerías a las preestablecidas en R. Sin embargo, en ciertos contextos `repmis` puede ser una muy buena opción.
+
+### Manipulación de datos
+
+Cargamos los datos desde un repositorio en GitHUb (en este caso, el repositorio de datos 

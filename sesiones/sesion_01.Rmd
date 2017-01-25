@@ -1,0 +1,67 @@
+---
+title: "S01 - Estimación de curvas"
+author: "Juan Carlos Martínez-Ovando"
+date: "Primavera 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Datos
+
+Iniciamos la sesión importando los datos `Curve_Data.Rdata` del repositorio del curso.
+
+```{r curve_data, echo=TRUE}
+rm(list=ls())
+githubURL <- "https://github.com/jcmartinezovando/est25134_2017a/raw/master/datos/Curve_Data.RData"
+
+# For Windows
+load(url(githubURL))
+
+# If trouble, try this on Linux or iOS
+download.file(githubURL,"Curve_Data")
+load("Curve_Data")
+ls()
+```
+
+Pensemos que deseamos descrifrar el patrón de la relación que subyace a los `datos` representados en la siguiente gráfica (considerando $y$ como variable de respuesta).
+
+```{r curve_plot, echo=TRUE}
+plot(datos)
+summary(datos)
+```
+
+
+
+## Contexto
+
+En esta sesión revisaremos los conceptos fundamentales para la estimación de curvas de modelos relacionales. Iniciaremos con la estimación de curvas de respuesta en una dimensión.
+
+El modelo que estaremos explorando es el que empezamos a estudiar en la sesión anterior, i.e. $Y$ es la variable de respuesta (con soporte en $\Re$), y $X$ es un conjunto de covariables (tomando valores en $\Re^p$).
+
+Así, La relación de $Y$ en respuesta de $X$ es
+$$
+Y|X \sim N(y|f(X),\sigma^2)
+$$
+
+En este caso, la esperanza condicional de $Y$ condicional en $X$ es,
+$$
+\mathbb{E}(y|X)=f(X),
+$$
+y $f(\cdot)$ se supone tener una forma structural flexible. En particular, trabajaremos en el ejemplo de esta sesion con $f$ miembro de la clase de 
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
