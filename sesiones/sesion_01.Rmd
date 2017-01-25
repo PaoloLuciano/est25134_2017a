@@ -7,6 +7,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+options(digits=2)
 ```
 
 ## Datos
@@ -33,8 +38,6 @@ plot(datos)
 summary(datos)
 ```
 
-
-
 ## Contexto
 
 En esta sesión revisaremos los conceptos fundamentales para la estimación de curvas de modelos relacionales. Iniciaremos con la estimación de curvas de respuesta en una dimensión.
@@ -46,22 +49,63 @@ $$
 Y|X \sim N(y|f(X),\sigma^2)
 $$
 
-En este caso, la esperanza condicional de $Y$ condicional en $X$ es,
+En este caso, la esperanza de $Y$ condicional en $X$ es,
 $$
 \mathbb{E}(y|X)=f(X),
 $$
-y $f(\cdot)$ se supone tener una forma structural flexible. En particular, trabajaremos en el ejemplo de esta sesion con $f$ miembro de la clase de 
+suponiendo que $f(\cdot)$ tiene una forma structural flexible. En particular, trabajaremos en el ejemplo de esta sesion con $f$ miembro de la clase de funciones polinomiales, con
+$$
+f(x)=\sum_{j=0}^{\infty}\alpha_j \phi_j(x),
+$$
+donde 
+$$
+\phi_j(x)=x^{j},
+$$
+con $x\in (0,1)$.
 
-```{r cars}
-summary(cars)
+Los `datos` $(y,x)$ corresponden a la **muestra de entrenamiento**. Iniciamos realizando una inspección descriptiva de los datos (primeros 100), contrastada con $f$ ***(aunque, en aplicaciones reales no la conocemos)***.
+
+```{r curve_descripcion, echo=FALSE}
+library(ggplot2)
+x_plot <- seq(0,1,0.01)
+y_plot <- f(x_plot)
+ggplot(datos[c(1:100),], aes(x=x, y=y), colour='red')+
+  geom_point() +
+  annotate("line", x=x_plot, y=y_plot, linetype="dotted")
 ```
 
-## Including Plots
+## Especificación del modelo
 
-You can also embed plots, for example:
+Aunque consideramos que $f$ forma parte de la clase de la clase de todos los posibles polinomios en $x$, en la práctica consideraremos generalmente una versión simplificada de su expansión (en este caso, restringiendo el orden de los polinomios a lo más igual a $J$), i.e.
+$$
+f(x)=\sum_{j=0}^{J}\alpha_j \phi_j(x).
+$$
+En nuestra aplicación, $J$ es fijo y conicido; más adelante en el curso exploraremos el caso donde $J$ sea aleatorio (a.k.a. desconocido).
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+Así, los parámetros del modelo son ahora,
+$$
+\boldsymbol{\alpha}=(\alpha_0,\ldots,\alpha_J) \ \ \text{y} \ \ \sigma^2.
+$$
+
+## Aprendizaje
+
+El aprendizaje en este modelo lo realizaremos empleando **máxima verosimilitud**, cuyos estimadores coinciden con los obtenidos por **mínimos cuadrados**, i.e.
+
+```{r}
+f_mle <- function(datos, J){
+  lm(y ~ poly(x, degree=J, raw = TRUE), 
+     data = datos)
+  }
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+De esta forma, los estimadores puntuales para $\alpha$ son
+
+
+Las $\hat{\alpha_j}$ están dadas por:
+
+```{r}
+f_alpha <- f_mle(datos, J=6)
+data.frame(coef = coef(f_alpha))
+```
+
+Notemos que en este caso los datos de entrenamiento son la muestra completa. Contrastando con la verdadera funcion $f$ (empleando una submuestra de los primeros 100 datos para efectos de graficacion) tenemos,
