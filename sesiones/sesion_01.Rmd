@@ -98,10 +98,7 @@ f_mle <- function(datos, J){
   }
 ```
 
-De esta forma, los estimadores puntuales para $\alpha$ son
-
-
-Las $\hat{\alpha_j}$ están dadas por:
+De esta forma, los estimadores puntuales para $\boldsymbol{\alpha}$ son $\hat{\boldsymbol{\alpha}}$:
 
 ```{r}
 f_alpha <- f_mle(datos, J=6)
