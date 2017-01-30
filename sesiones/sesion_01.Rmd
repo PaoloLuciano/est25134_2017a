@@ -1,5 +1,5 @@
 ---
-title: "S01 - Estimación de curvas"
+title: "S01 - Estimación de curvas (unidimensional)"
 author: "Juan Carlos Martínez-Ovando"
 date: "Primavera 2017"
 output: html_document
@@ -7,10 +7,6 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(knitr)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
 options(digits=2)
 ```
 
@@ -29,12 +25,20 @@ load(url(githubURL))
 download.file(githubURL,"Curve_Data")
 load("Curve_Data")
 ls()
+
+# Libraries
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(MASS)
+library(RColorBrewer)
 ```
 
 Pensemos que deseamos descrifrar el patrón de la relación que subyace a los `datos` representados en la siguiente gráfica (considerando $y$ como variable de respuesta).
 
 ```{r curve_plot, echo=TRUE}
-plot(datos)
+plot(datos, pch=19, cex=.4, col="blue")
 summary(datos)
 ```
 
@@ -98,11 +102,51 @@ f_mle <- function(datos, J){
   }
 ```
 
-De esta forma, los estimadores puntuales para $\boldsymbol{\alpha}$ son $\hat{\boldsymbol{\alpha}}$:
+De esta forma, los estimadores puntuales para $\alpha$ son
+
+
+Las $\hat{\alpha_j}$ están dadas por:
 
 ```{r}
 f_alpha <- f_mle(datos, J=6)
 data.frame(coef = coef(f_alpha))
 ```
 
-Notemos que en este caso los datos de entrenamiento son la muestra completa. Contrastando con la verdadera funcion $f$ (empleando una submuestra de los primeros 100 datos para efectos de graficacion) tenemos,
+Notemos que en este caso los datos de entrenamiento corresponden con la muestra completa. Contrastando con la verdadera función $f$ (empleando una submuestra de los primeros 100 datos para efectos de graficación) tenemos,
+
+```{r}
+dat <- data.frame(
+        x = x_plot, 
+        prediccion = predict(f_alpha, newdata=data.frame(x=x_plot)),
+        esperado = y_plot)
+
+data_plot <- dat %>% 
+        gather(tipo, valor, prediccion:esperado)
+head(data_plot)
+
+ggplot(data_plot, aes(x=x, y=valor, linetype=tipo )) + 
+    geom_line() +
+    ylim(c(-3,3)) +
+    annotate("point",x=datos$x, y=datos$y, colour="green")
+```
+
+El error cuadratico del aprendizaje de este modelo se calcula como,
+$$
+\sum_{i=1}^{n}(y_i-\hat{y}_i)^2,
+$$
+donde 
+$$
+\hat{y}_i = \hat{f}(x_i)=\sum_{j=0}^{J}\hat{\alpha}_j\phi(x_i),
+$$
+con $\phi(x_i)=x_i^j$, para $j=1,\ldots,J$, en nuestro caso. Es decir,
+```{r}
+y_fit <- predict(f_alpha, newdata = datos)
+mean((datos$y - y_fit)^2)
+cor(datos$y,y_fit)
+k <- 11
+colors <- rev(brewer.pal(k, "RdYlBu"))
+contour <- kde2d(datos$y, y_fit, n=50)
+plot(cbind(datos$y,y_fit), xlab="y", ylab="y_fit", pch=19, cex=.4, col="grey")
+contour(contour, drawlabels=FALSE, nlevels=k, col=colors, add=TRUE)
+abline(h=mean(y_fit), v=mean(datos$y), lwd=2)
+```
