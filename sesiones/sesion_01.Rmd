@@ -1,5 +1,5 @@
 ---
-title: "S01 - Estimación de curvas (unidimensional)"
+title: "S01 - Estimación de curvas (regresión simple)"
 author: "Juan Carlos Martínez-Ovando"
 date: "Primavera 2017"
 output: html_document
@@ -91,7 +91,7 @@ $$
 \boldsymbol{\alpha}=(\alpha_0,\ldots,\alpha_J) \ \ \text{y} \ \ \sigma^2.
 $$
 
-## Aprendizaje
+## Aprendizaje frecuentista
 
 El aprendizaje en este modelo lo realizaremos empleando **máxima verosimilitud**, cuyos estimadores coinciden con los obtenidos por **mínimos cuadrados**, i.e.
 
@@ -150,3 +150,67 @@ plot(cbind(datos$y,y_fit), xlab="y", ylab="y_fit", pch=19, cex=.4, col="grey")
 contour(contour, drawlabels=FALSE, nlevels=k, col=colors, add=TRUE)
 abline(h=mean(y_fit), v=mean(datos$y), lwd=2)
 ```
+
+## Aprendijaje bayesiano
+
+Bajo el enfoque bayesiano de aprendizaje, es necesario complementar la especificación del modelo, como está contemplado en las líneas anteriores, con una distribución inicial sobre $f$ (la función de regresión). Cuando consideramos que $f(x)$ está expresada en términos de una expansión de funciones base (con $J$ finito), se tiene que la distribución inicial para la curva, considerando $x$ fija, es
+$$
+\pi(f)=\pi(\boldsymbol{\alpha}),
+$$
+donde $\boldsymbol{\alpha}=(\alpha_0,\ldots,\alpha_J).$ Notemos que la especificacion de la distribuci[on inicial no se restringir[a solamente a los coeficientes de regresion de la curva, $f(x)$, sino a la posible dispersion asociada, $\sigma^{2}$. Asi, la distribucion inicial practica, para un $J$ fijo, es
+$$
+\pi(f)=\pi(\boldsymbol{\alpha},\sigma^{2}).
+$$
+
+Como mencionamos, consideraremos dos tipos de distribuciones iniciales sobre $\boldsymbol{\alpha}$:
+
+1. Objetivo (no informativo)
+2. Conjugado (puede o no ser informativo).
+
+### Aprendizaje bayesiano objetivo
+
+En este caso, la distribucion inicial torna de la forma,
+$$
+\pi(\boldsymbol{\alpha},\sigma^{2}) 
+  \propto
+  1/\sigma
+  \boldsymbol{1}_{\Re^{J+1}\times \Re_{+}}(\boldsymbol{\alpha},\sigma^2).
+$$
+
+Notemos que esta distribucion inicial **no es propia** (en el sentido que integre a 1 en su soporte, o que la integral sobre su soporte sea finita, al menos). Este no es un problema, pues el **procedimiento bayesiano de aprendizaje**, arroja una distribucion final propia para $(\boldsymbol{\alpha},\sigma^2)$, a momento de incorporar datos de entrenamiento.
+
+El procedimiento consiste en calcular la distribucion de $(\boldsymbol{\alpha},\sigma^2)$ condicional en la muestra de entrenamiento, $\{(y_i,x_1)\}_{i=1}^{n}$, i.e.
+
+$$
+\begin{eqnarray}
+\pi(\boldsymbol{\alpha},\sigma^{2}| \{(y_i,x_1)\}_{i=1}^{n}) 
+ & = &
+ \frac{\mathbb{P}(\boldsymbol{\alpha},\sigma^{2}, \{(y_i,x_1)\}_{i=1}^{n})}
+ {\mathbb{P}(\{(y_i,x_1)\}_{i=1}^{n})}
+ \\
+ & = &
+ \frac{\prod_{i=1}^{n}N(y_i|f(x_i),\sigma^{2}) \times   
+ \pi(\boldsymbol{\alpha},\sigma^{2})}
+ {\int \prod_{i=1}^{n}N(y_i|f(x_i),\sigma^{2}) \times   
+ \pi(\boldsymbol{\alpha},\sigma^{2}) d\boldsymbol{\alpha}d\sigma^{2}}\\
+ & \propto &
+ \prod_{i=1}^{n}N(y_i|f(x_i),\sigma^{2}) \times   
+ \pi(\boldsymbol{\alpha},\sigma^{2})\\
+ & = &
+ Norm-GInv(\boldsymbol(\boldsymbol{\alpha},\sigma^{2})|
+ \boldsymbol{m}_1,\boldsymbol{S}_1,a_1.b_1),
+ 
+\end{eqnarray}
+$$
+
+donde 
+
+$$
+\begin{eqnarray}
+\boldsymbol{m}_1 & = & (\tilde{X}_J'\tilde{X}_J)^{-1}\tilde{X}_J' y\\
+\boldsymbol{S}_1 & = & (\tilde{X}_J'\tilde{X}_J)^{-1}\\
+a_1 & = & \frac{n-(J+1)}{2}\\
+b_1 & = & \frac{1}{n-(J+1)}(y-\tilde{X}_J\boldsymbol{m}_1)'(y-\tilde{X}_J\boldsymbol{m}_1)
+.
+\end{eqnarray}
+$$
