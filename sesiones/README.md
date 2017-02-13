@@ -5,17 +5,13 @@
 ### Sesiones
 
 * S00 - Algo acerca de R -- 
-<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_00.html">[html]</a> --  
-<a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_00.Rmd">[Rmd]</a>
+<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_00.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_00.Rmd">[Rmd]</a>
 
 * <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/Wasserman%20-%20All%20of%20Statistics%20(A%20Concise%20Corse)%20(Book)%20-%202005.pdf">Wasserman - All of Statistics</a>
 
-* S01 - Estimación de curvas (unidimensional)
-<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_01.html">[html]</a>   
-<a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_01.Rmd">[Rmd]</a>   
+* S01 - Estimación de curvas (unidimensional) -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_01.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_01.Rmd">[Rmd]</a>
+
 Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_01_prop.pdf"> [PDF]</a>
 
-* S02 - Estimación de curvas (multidimensional)
-<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_02.html">[html]</a>   
-<a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_02.Rmd">[Rmd]</a>   
+* S02 - Estimación de curvas (multidimensional) -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_02.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_02.Rmd">[Rmd]</a>   
 
