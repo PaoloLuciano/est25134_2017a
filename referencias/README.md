@@ -7,6 +7,8 @@
 * <a href='https://github.com/jcmartinezovando/est25134_2017a/blob/master/referencias/Efron%20-%20A%20250-Year%20Argument%20-%202013.pdf'>Efron (2013)</a>
 * <a href='https://github.com/jcmartinezovando/est25134_2017a/blob/master/referencias/Efron%20-%20Bayesian%2C%20frequentists%20and%20scientists%20-%202006.pdf'>Efron (2006)</a>
 
+* <a href='https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwj3xZ7To43SAhVY8WMKHSKDBWcQFggqMAI&url=http%3A%2F%2Fpages.cs.wisc.edu%2F~tdw%2Ffiles%2Fcookbook-en.pdf&usg=AFQjCNELmigL_PiJt8Qp4ri57epxnDGGLA&sig2=_kEY0srNpnw0Shpj78-M2g'>Probability and Statistics Cookbook (Matthias Vallentin)</a>
+
 ### Bibliografia
 
 * <a href='https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&sqi=2&ved=0ahUKEwjXvomsmsjRAhXi5IMKHcLnA0wQFggfMAE&url=http%3A%2F%2Fcs.du.edu%2F~mitchell%2Fmario_books%2FIntroduction_to_Machine_Learning_-_2e_-_Ethem_Alpaydin.pdf&usg=AFQjCNFuVAIi-znRg4HFrhfP71FrQmkA7w&sig2=YSMJQ0YesxuXSwcmFVmULQ&bvm=bv.144224172,d.cGc'>Alpaydin (2014)</a>
