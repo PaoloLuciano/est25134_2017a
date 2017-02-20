@@ -17,3 +17,5 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S02 - Algoritmo EM-Gibbs-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_02_emgibbs.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_02_emgibbs.Rmd">[Rmd]</a>   
 
+* S03 - Estimación de curvas (multidimensional - parte 2)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_03.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_03.Rmd">[Rmd]</a>   
+
