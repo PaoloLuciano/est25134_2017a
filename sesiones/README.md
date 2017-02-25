@@ -19,4 +19,4 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S03 - Estimación de curvas (multidimensional - parte 2)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_03.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_03.Rmd">[Rmd]</a>   
 
-* S03 - Clasificaci&oacuten no supervizada (inicio)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_04.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_04.Rmd">[Rmd]</a>   
+* S04 - Clasificación no supervizada (inicio)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_04.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_04.Rmd">[Rmd]</a>   
