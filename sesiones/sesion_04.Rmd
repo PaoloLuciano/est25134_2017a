@@ -163,7 +163,7 @@ z_i
 
 El tratamiento de variables latentes es mas natural bajo el paradigma bayesiano de aprendizaje. Recordemos que los parametros involucrados en el modelo son los coeficientes de proyeccion, $\alpha$. En este caso, asignamos una distribucion inicial sobre ellos dada por,
 \begin{equation}
-\pi(\alpha) = N_p\left(\alpha|m_a,\sigma_a\right),
+\pi(\alpha) = N_p\left(\alpha|m_a,\Sigma_a\right),
 \end{equation}
 para algun $m_a$ y $\Sigma_a$.
 
@@ -176,7 +176,7 @@ $$
 q=Pr\left(z_i>0|x_i'\alpha^{(k)},1\right).
 $$
 
-* Condicional en $(z_i^{(k)})_{i=1}^{n}$, la distribucion final para $alpha$ se obtiene como la de un modelo de regresion donde 
+* Condicional en $(z_i^{(k)})_{i=1}^{n}$, la distribucion final para $\alpha$ se obtiene como la de un modelo de regresion donde 
 $$
 z^{(k)} \sim N_n\left(z^{(k)}|X'\alpha,\sigma^2\mathbb{I}_n\right).
 $$
@@ -190,7 +190,7 @@ Presentamos un algoritmo autonomo que obtiene muestras de la distribucion final 
 install.packages('mvtnorm')
 ```
 
-```{r gibbs.probit}
+```{r gibbs.probit, echo=TRUE}
 gibbs.probit <- function(Y, X, m0, S0, b0, z0, G){
   # Gibbs sampler para el modelo probit
   #
@@ -243,26 +243,37 @@ gibbs.probit <- function(Y, X, m0, S0, b0, z0, G){
 }
 ```
 
-# Ejemplo 1: Datos similados separados
+# Ejemplo 1: Datos simulados separados
+
+La primera ilustracion consiste en analizar un conjunto de `3000` datos simulados que incluyen una variable de `atributos` dicotomica $Y\in\{0,1\}$ y dos variables de estimulos $(X_1,X_2)$, ambas definidas en el intervalo $[-1,1]$.
+
+Los datos estan disponibles en el repositorio del curso.
 
 ```{r ex1_sim, include=FALSE}
-target <- function(x1, x2) {
-  2*(x2 - x1 + .25*sin(pi*x1) >= 0)-1
-}
+githubURL <- "https://github.com/jcmartinezovando/est25134_2017a/raw/master/datos/EST25134_ClasifSup.RData"
 
-N <- 1000
-X <- data.frame(x1=runif(N, min=-1, max=1),
-                x2=runif(N, min=-1, max=1))
-Y <- target(X$x1, X$x2)
-Y[which(Y==-1)] <- 0
+# En Windows
+load(url(githubURL))
+ls()
+Y <- datos$Y
+X <- datos[,c("x1","x2")]
 ```
+
+Los estimulos y atributos estan relacionados de manera separable, como se muestra en la siguiente grafica *-noten que la separacion no es lineal-*.
 
 ```{r ex1_data}
 table(Y)
 plot(X$x1, X$x2, col=Y+3)
 ```
 
-Estimacion via MLE
+### i) Aprendizaje frecuentista
+
+* Aun cuando la separacion de los datos es notoriamente no lineal, inicaremos relizando un ejercicio de separacion (i.e. **clasificacion supervisada**) con base en un proyector lineal
+ 
+* De igual forma, empezaremos relizando el aprendizaje del modelo basado en *maxima verosimilutd*.
+
+Se tienen los siguientes resultados de aprendizaje:
+
 ```{r ex1_mle}
 #		Analisis frecuentista (modelo saturado)
 X <- cbind(X$x1,X$x2)
@@ -270,18 +281,40 @@ ex1_mle <- glm(Y ~ -1+X, family=binomial("probit"))
 summary(ex1_mle)
 ```
 
-Inferencia bayesiana
+Noten que los coeficientes de ambos estimadores para $X_1$ y $X_2$ son significativamente distintos de $0$.
+
+**La siguiente sesion revisaremos metodos robustos para evaluar el ajuste (y prediccion) de esta clase de modelos.**
+
+### ii) Aprendizaje bayesiano
+
+Seguimos ahora relizando un ejercicio de aprendizaje bayesiano. Fijamos la semilla (`seed`) en $33$ para efectos de replicabilidad de resultados.
+
+El aprendizaje bayesiano lo realizamos con base en el algoritmo autonomo de Gibbs (`gibbs.probit`) que presentamos antes. Fijamos:
+
+* Longitud de la cadena de Markov en 10 mil iteraciones
+
+* Centramos la distribucion inicial de $\alpha$ en los EMV (*Empirical Bayes (EB)*)
+
+* Asignamos bastante dispersion a la distribucion inicial, con varianzas iguales a $30$ unidades
+
+* Inicialmente suponemos que los coeficientes $\alpha_1$ y $\alpha_2$ son mutuamente independientes (su dependencia en la distribucion final dependera de la estructura de correlacion entre $X_1$ y $X_2$ estimulos).
+
+* Los valores iniciales de la cadena de Markov los fijamos en $0$ para las `variables latentes` $(z_i)$ y en el EMV para los `parametros` $(\alpha_1,\alpha_2)$
+
+**Ejercicio:** Prueben que resultados encontraran modificando las especificaciones anteriores.
+
 ```{r ex1_gibbs}
 set.seed(33)
 
 # Simulaciones
-G <- 1000
+G <- 10000
 
 # Distribucion inicial
 m0 <- ex1_mle$coef
-S0 <- diag(1, nrow=2, ncol=2)
+S0 <- diag(30, nrow=2, ncol=2)
 
 # Valores inciales
+N <- nrow(datos)
 b0 <- ex1_mle$coef
 z0 <- matrix(0, nrow=1, ncol=N)
 
@@ -289,8 +322,9 @@ z0 <- matrix(0, nrow=1, ncol=N)
 ex1_gibbs <- gibbs.probit(Y, X, m0, S0, b0, z0, G)
 ```
 
-Respecto a la media de los coeficientes de proyeccion, se obtienen los siguientes resultados.
-```{r ex1_summary}
+La distribucion final de los parametros $(\alpha_1,\alpha_2)$ del modelo derivada del procedimiento de simulacion arroja los siguientes resultados.
+
+```{r ex1_resumen}
 # Kernel Density Plot
 b.x1 <- density(ex1_gibbs[[1]][,1])
 plot(b.x1, ylab = "Densidad", xlab = "b.x1", main="")
@@ -300,7 +334,25 @@ plot(b.x2, ylab = "Densidad", xlab = "b.x2", main="")
 
 # Dispersion
 plot(ex1_gibbs[[1]], ylab = "b.x1", xlab = "b.x2", main="")
+```
 
+* Observamos que marginalmente las distribuciones de $\alpha_1$ y  $\alpha_2$ estan aproximadamente centradas en los EMV. Este resultado es ajeno a la especificacion de la distribucion inicial y de los valores iniciales de la cadena en el algoritmo. *Los invito a revisar esto.*  
+
+* A diferencia del aprendizaje frecuentista, en el bayesiano tenemos la posibilidad de modular que tan admisible son los otros diferentes valores de los parametros. Esto resultara ser fundamental no tanto desde el punto de vista de `aprendizaje estadistico`, sino en subsecuentes ejercicios de `prediccion`.
+
+* Tambien, a diferencia del enfoque frecuentista, en el bayesiano podemos diagnosticar la identificabilidad de los parametros. En este caso, observamos que existe una estructura de dependencia fuerte entre $\alpha_1$ y $\alpha_2$. *Adelante en el curso veremos formas de corregir este comportamiento.*
+
+Cuando se implementa un MCMC hay varios aspectos que controlar para garantizar los mejores resultados posibles. Algunos de estos aspectos pueden monitorearse graficamente empleando las siguentes graficas. Observamos:
+
+* Fuerte dependencia de los `paths` de simulacion
+
+* Comportamiento ciclico en sus paths
+
+* Convergencia ergodica
+
+Los dos aspectos negativos pueden corregirse empleando metodos ya conocidos en la actualidad. 
+
+```{r ex1_diagnostico}
 # ACF
 acf(ex1_gibbs[[1]])
 
@@ -309,9 +361,44 @@ plot(ex1_gibbs[[1]][,1], ylab="b.x1", xlab="iteracion",main="")
 plot(ex1_gibbs[[1]][,2], ylab="b.x2", xlab="iteracion",main="")
 ```
 
-# Ejemplo 2: Datos reales
++ Los ejercicios practicos importantes de este curso los realizaremos con JGAS (Jet another Gibbs Sampler), que esta implementado en R, el cual incluye varias de estas erramientas de correccion.
 
-### Datos
+# Tarea
+
+Adicional a la `tarea` mencionada arriba, consideren:
+
+* Modificar la especificacion de la distribucion inicial en el algoritmo.
+
+* En otro ejercicio, modificar el valor inicial de la cadena de Markov.
+
+En ambos casos, prueben los resultados que encontrarian considerando tres longitudes de la cadena de Markov:
+
+a. 1 mil
+
+b. 30 mil
+
+c 100 mil
+
+(Descuiden, el algoritmo no toma tanto tiempo en ejecucion).
+
+# Referencias
+
+* **Hastie et al** - Secciones 4.2, 4.3, 4.4
+
+* **James et al** - Secciones 4.1-4.3
+
+* **Alpaydin** - Secciones 10.1, 10.7, 10.8
+
+* **Barber** - Seccion 16.1
+
+* **Bishop** - Capitulo 4
+
+
+# Adicional
+
+Adicionalmente, empiecen a explorar los datos `EST25134_Pregnancy.Rdata` del repositorio del curso. Estos son datos reales sobre embarazos prematuros en mujeres de los EEUU. 
+Exploraremos con detalle en la siguiente sesion estos datos, incluyendo tanto para esos como para los datos simulados de hoy, especificaciones mas felxibles del `proyector` de los estimulos.
+
 ```{r ex2_data}
 #		Datos
 setwd("/home/jcmo/JCMO.Trabajo/@Mis.Cursos/2017-A_Aprendizaje Estadistico/sesiones")
