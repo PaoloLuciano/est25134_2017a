@@ -6,8 +6,14 @@ Este es el repositorio de datos para el curso Aprendizaje Estadístico de Primav
 
 ### Datos
 
-* `DanishInsuranceMultivariate_Data.Rdata` - Datos de reclamos de siniestros de un portafolio de seguros de vivienda
-* `Curve_Data.Rdata` - Datos asociados a una curva de respuesta univariada
+* `EST25134_DanishInsuranceMultivariate_Data.Rdata` - Datos de reclamos de siniestros de un portafolio de seguros de vivienda
+
+* `EST25134_Curve_Data.Rdata` - Datos asociados a una curva de respuesta univariada 
+
+* `EST25134_ClasifSup.Rdata` - Datos simulados para clasificacion supervisada (Y-variable dicotomica, (X1,X2)-estimulos continuos)
+
+* `EST25134_Pregnancy.Rdata` - Datos reales sobre embarazos prematuros en mujeres de EEUU (Y-variable dicotomica, X1-variable de estimulo, (Z1-Z4)-estimulo control).
+  
 
 ## Importación en R
 
