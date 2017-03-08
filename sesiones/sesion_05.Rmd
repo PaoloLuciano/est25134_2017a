@@ -212,3 +212,5 @@ table(pred = svm.pred, true = iris[,5])
 * **Alpaydin** - Secciones 10.8-10.9
 
 * **Clark et al** - Seccion 5.4
+
+* Cortes, C. & Vapnik, V. (1995). Support-vector network. Machine Learning, 20, 1–25.
