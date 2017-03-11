@@ -26,7 +26,7 @@ Dataset: `ClasifSup.Rdata` -
 
 ### A) *BBC News*
 
-Descripción: Este conjunto de datos contiene un pequeño subconjunto de documentos de Wikipedia y noticias de la BBC. El conjunto de datos wikipedia tiene texto y matriz tf-idf; El conjunto de datos de la BBC viene sólo con el recuento de palabras.
+Descripción: Este conjunto de datos contiene un pequeño subconjunto de documentos de Wikipedia y noticias de la BBC. El conjunto de datos wikipedia tiene texto y matriz tf-idf. El conjunto de datos de la BBC viene sólo con el recuento de palabras.
 
 Dataset: `bbcnews.Rdata`
 
@@ -36,7 +36,7 @@ _Proposito: Clasificacion no supervisada de textos._
 
 Descripción: Este conjunto de datos es de 2012 KDD Cup Track 2, donde la tarea es predecir la tasa de clics de los anuncios dados una consulta, la información de los anuncios (enlace) y la información del usuario. Haga clic aquí para obtener una descripción detallada de los datos.
 
-El conjunto de datos original se divide en 3 partes: capacitación, pruebas y mapas desde el identificador de función a las características. El conjunto de entrenamiento tiene 150 M de instancias y los datos de prueba tienen 20 M de instancias. Submuestras y simplificar este conjunto de datos uniendo los datos de entrenamiento y pruebas con los mapas de características.
+El conjunto de datos original se divide en 3 partes: capacitación, pruebas y mapas desde el identificador de función a las características. El conjunto de entrenamiento tiene 150 M de instancias y los datos de prueba tienen 20 M de instancias. 
 
 Dataset: `clickprediction.Rdata`
 
@@ -44,7 +44,7 @@ _Proposito: Prediccion._
 
 ### C) CoVaR
 
-Descripcion: Este es un panel trimestral de CoVaRCoVaR y ΔCoVaRΔCoVaR, calculado en el 95- y 99- para todas las empresas en el período de la muestra de 1971-2013. (ΔΔ) CoVaR es una medida del riesgo sistémico calculada a partir de variables de estado subyacentes (por ejemplo, volatilidad de capital) y características de los bancos (por ejemplo, apalancamiento del libro) por Adrian y Brunnermeier (las variables estatales y las características bancarias provienen de los datos subyacentes. Detalles sobre el cálculo). Los datos proporcionados en este comunicado no pueden ser utilizados para reestimar (ΔΔ) CoVaR, o más generalmente, para reproducir los resultados del trabajo (para eso, los datos subyacentes son necesarios). El objetivo de este comunicado es facilitar el estudio de los riesgos específicos de las instituciones y del sistema por parte de otros académicos, responsables de políticas y participantes en el mercado.
+Descripcion: Este es un panel trimestral de $CoVaR$ y $\Delta CoVaR$, calculado en el 95- y 99- para todas las empresas en el período de la muestra de 1971-2013. ($\Delta$) CoVaR es una medida del riesgo sistémico calculada a partir de variables de estado subyacentes (por ejemplo, volatilidad de capital) y características de los bancos (por ejemplo, apalancamiento del libro) por Adrian y Brunnermeier (las variables estatales y las características bancarias provienen de los datos subyacentes. Detalles sobre el cálculo). Los datos proporcionados en este comunicado no pueden ser utilizados para reestimar ($\Delta$) $CoVaR$, o más generalmente, para reproducir los resultados del trabajo (para eso, los datos subyacentes son necesarios). El objetivo de este comunicado es facilitar el estudio de los riesgos específicos de las instituciones y del sistema por parte de otros académicos, responsables de políticas y participantes en el mercado.
 
 Dataset: `CoVaR.Rdata`
 
@@ -59,9 +59,8 @@ _Proposito: Clasificacion no supervisada y prediccion._
 Dataset: `DanishInsuranceMultivariate_Data.Rdata`
 
 ###  E) Diabetes
-Descripción: Estos datos consisten en observaciones en 442 pacientes, siendo la respuesta de interés una medida cuantitativa de la progresión de la enfermedad un año después de la línea de base. Hay diez variables basales — edad, sexo, índice de masa corporal, presión arterial media y seis mediciones de suero sanguíneo — más términos cuadráticos, dando un total de 64 características.
 
-Obsérvese que estos datos se estandarizan primero para que tengan una media cero y una unidad L2 antes de que se usen en los ejemplos.
+Descripción: Estos datos consisten en observaciones en 442 pacientes, siendo la respuesta de interés una medida cuantitativa de la progresión de la enfermedad un año después de la línea de base. Hay diez variables basales — edad, sexo, índice de masa corporal, presión arterial media y seis mediciones de suero sanguíneo — más términos cuadráticos, dando un total de 64 características.
 
 _Proposito: Clasificacion supervisada y prediccion._
 
@@ -69,7 +68,7 @@ Dataset: `diabetes.Rdata`
 
 ### F) Netflix
 
-Descripción: Este dataset es el conjunto de entrenamiento de Netflix Challenge, que contiene 99 millones de calificaciones de ids de usuario a ids de película. Cada línea tiene la forma de “ID de identificación de usuario id”.
+Descripción: Este dataset es el conjunto de entrenamiento de Netflix Challenge, que contiene 99 millones de calificaciones de ids de usuario a ids de película. Cada línea tiene la forma de “ID de identificación de usuario".
 
 Dataset: `netflix.Rdata`
 
@@ -85,7 +84,7 @@ Dataset: `pregnancy.Rdata` -
 
 ### H) *Stock prices*
 
-Descripcion: Precios y retornos de activos financieros de empresas de tecnologias.
+Descripcion: Precios y retornos de activos financieros de empresas de tecnologia.
 
 Dataset: `StockPrices.Rdata`
 
