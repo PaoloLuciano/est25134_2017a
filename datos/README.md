@@ -104,6 +104,7 @@ Dataset: `titanic.Rdata`
 
 Empleando la libreria `repmis` de R, podemos importar los datos directamente de un repositorio en la web. Por ejemplo, para cargar los datos en R de los datos simulados de clasificacion supervizada, `ClasifSup.RData`, empleamos las siguientes opciones. 
 
+Empleando la libreria `repmis`:
 ```
 require("repmis")
 
