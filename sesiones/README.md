@@ -33,6 +33,8 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S05 - Clasificación supervizada (maquina de soporte vectorial)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_05.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_05.Rmd">[Rmd]</a>   
 
+* S06 - Clasificación supervizada (comparacion estadistica de clasificadores)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_06.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_06.Rmd">[Rmd]</a>   
+
 #### Clasificacion no supervizada
 
 #### Modelos de redes / modelos graficos
