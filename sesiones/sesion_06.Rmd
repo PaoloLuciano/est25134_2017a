@@ -1,5 +1,5 @@
 ---
-title: "S07 - Clasificacion supervisada"
+title: "S06 - Clasificacion supervisada"
 author: "Juan Carlos Martínez-Ovando"
 date: "Primavera 2017"
 output: html_document
@@ -142,7 +142,7 @@ p_s & = & \frac{m_{00}+m_{10}}{m}. \nonumber
 
 Las tasas $p_r$ y $p_s$ pueden interpretarse, bajo la hipotesis nula, como la probabilidad de clasificacion erronea en ambos modelos. Suponiento `independencia` en la muestra de entrenamiento, tenemos que el numero de clasificaciones erroneas en ambos modelos sique una distribucion $Bin(n|m,p_r)$ y $Bin(n|m,p_s)$, respectivamente.
 
-Empleando la aproximacion normal para la distribucion binomial, tenemos que la diferencia $$p_r-p_s$$ tendra, bajo la hipotesis nula, una distribucion aproximada $N\left(\cdot|0,\text{d.e.}^{2}\right),
+Empleando la aproximacion normal para la distribucion binomial, tenemos que la diferencia $$p_r-p_s$$ tendra, bajo la hipotesis nula, una distribucion aproximada $N\left(\cdot|0,\text{d.e.}^{2}\right)$,
 donde 
 $$
 \text{d.e.} = \left(\frac{2p(1-p)}{m}\right)^{1/2},
