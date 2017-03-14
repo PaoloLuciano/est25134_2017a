@@ -36,7 +36,7 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S06 - Clasificación supervizada (comparacion estadistica de clasificadores)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_06.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_06.Rmd">[Rmd]</a>   
 
-* S07 - Clasificación supervizada (Ejemplos de analisis empirico)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_07.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_07.Rmd">[Rmd]</a>   
+* S07 - Clasificación supervizada (ejemplos de analisis empirico)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_07.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_07.Rmd">[Rmd]</a>   
 
 #### Clasificacion no supervizada
 
