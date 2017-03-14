@@ -6,14 +6,15 @@
 
 #### Introduccion a R y Octave
 
-* S00 - Algo acerca de R -- 
-<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_00.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_00.Rmd">[Rmd]</a>
+* S00r - Algo acerca de R -- 
+<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_00r.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_00r.Rmd">[Rmd]</a>
 
 * S00o - Algo acerca de Octave -- 
-<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_00.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_00.Rmd">[Rmd]</a>
+<a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_00o.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_00o.Rmd">[md]</a>
 
-#### Conceptos fundacionales de inferencia
-<a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/Wasserman%20-%20All%20of%20Statistics%20(A%20Concise%20Corse)%20(Book)%20-%202005.pdf">Wasserman - All of Statistics</a>
+#### Fundamentos de inferencia estadistica
+
+* <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/Wasserman%20-%20All%20of%20Statistics%20(A%20Concise%20Corse)%20(Book)%20-%202005.pdf">Wasserman</a>  - All of Statistics (Book)
 
 #### Estimacion de curvas y modelos de regresion
 
@@ -34,6 +35,8 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 * S05 - Clasificación supervizada (maquina de soporte vectorial)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_05.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_05.Rmd">[Rmd]</a>   
 
 * S06 - Clasificación supervizada (comparacion estadistica de clasificadores)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_06.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_06.Rmd">[Rmd]</a>   
+
+* S07 - Clasificación supervizada (Ejemplos de analisis empirico)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_07.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_07.Rmd">[Rmd]</a>   
 
 #### Clasificacion no supervizada
 
