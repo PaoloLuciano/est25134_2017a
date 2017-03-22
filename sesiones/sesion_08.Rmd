@@ -386,7 +386,27 @@ pMC.value.summary(stats, diff.means(data$experiment, data$control))
 ```
 
 
+-----
+
+## Comentarios
+
+* Los metodos de remuestreo se **pueden emplear** en todos los procedimientos de *aprendizaje estadistico* (ya sea *inferencial* o *predictivo*)
+
+* Son generalmente computacionalmente costosos, en funcion del tipo de *problema/modelo* y *enfoque de aprendizaje*
+
+* Su implementacion puede sortearse empleando "aproximaciones"
+
+-----
+
 ## Referencias
+
+* **Hastie et al** - Secciones 8.2-8.4
+
+* **James et al** - Capitulo 5
+
+* **Alpaydin** - Secciones 14.2-14.8
+
+* **Clark et al** - Capitulo 11
 
 * B. Efron - "Bootstrap Methods: Another Look at the Jackknife
 
@@ -406,3 +426,4 @@ print(tab, type="html")
 ```
 </center>
 
+2. Define como puedes interpretar el procedimiento `bootstrap` en un problema **predictivo**
