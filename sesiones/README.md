@@ -38,6 +38,8 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S07 - Clasificación supervizada (ejemplos de analisis empirico)-- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_07.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_07.Rmd">[Rmd]</a>   
 
+* S08 - Remuestreo -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_08.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_08.Rmd">[Rmd]</a>   
+
 #### Clasificacion no supervizada
 
 #### Modelos de redes / modelos graficos
