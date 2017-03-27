@@ -42,6 +42,12 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 #### Clasificacion no supervizada
 
+* S09 - Clasificación no supervisada (basada en distancias) -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_09.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_09.Rmd">[Rmd]</a>   
+
+* S10 - Clasificación no supervisada (basada en mezclas) -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_10.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_10.Rmd">[Rmd]</a>   
+
+* S11-12 - Taller de modelación -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_1112.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_1112.Rmd">[Rmd]</a>   
+
 #### Modelos de redes / modelos graficos
 
 #### Modelos dinamicos
