@@ -262,7 +262,53 @@ iris.cv2 <- train.kknn(Species ~ ., iris, nn=10, kernel="triangular")
 plot(iris.cv2, type="b")
 ```
 
+### I-d) *Density-based Cluster*
+
+La clasificacion en esta tipo de asignaciones de datos se obtiene "sobre-imponiendo" una `densidad` de probabilidades. 
+
+Para esto, se definen dos parametros:
+
+a. $r$ (o `eps`) - radio de la densidad al rededor de cada punto, y 
+
+b. `minpts` - numero de vecinos dentro del radio `eps`
+
+El algoritmo de asignacion, conocido como `DBscan` se deifne de la siguiente forma:
+
+1. Paso `scan` -  para cada punto $x_i$ se calcula la distancia con todos los puntos restantes. Se asigna una `clase` nueva a los puntos cuya distancia sea menos que `eps`.
+
+2. Paso `scan 2` - para cada punto, se etiqueta como un nucleo si el conteo de su vecindad es mayor que `minpts`
+
+3. Paso `scan 3` - para cada punto, si no ha sido asignado a una `clase`, se crea una `clase` nueva y se define el `nucleo` como el punto mismo
+
+_A diferencia de los algoritmos de asignacion anteriores, este algoritmo admite la posibilidad de identificas clases singulares (formadas por un solo dato). Estas clases son interpretadas como `outliers`._
+
+El algoritmo que implementa esta asignacion esta contenido en el paquete `pfc`:
+
+```
+install.packages("pfc")
+```
+
+Los resultados:
+
+```
+library(fpc)
+set.seed(121)
+sampleiris <- iris[sample(1:150, 40),] 
+# definimos `eps`  y `MinPts`
+cluster <- dbscan(sampleiris[,-5], eps=0.6, MinPts=4)
+# identificamos puntos outliers (negro)
+# identificamos `nucleos` (triangulos)
+# identificamos puntos frontera (circulos)
+plot(cluster, sampleiris)
+plot(cluster, sampleiris[,c(1,4)])
+# `clase` 0 son datos no clasificados en una clase
+# o `clases singulares`
+table(cluster$cluster, sampleiris$Species)
+```
+
 ## Anexo: Escalamiento de datos
+
+_Los algoritmos descritos en esta sesion funcionan mas eficientemente cuando los datos (escalares, desde luego) son `estandarizados por renglon` en media y varianza._
 
 Pensemos que tenemos un conjunto de datos $y$ que deseamos clasificar. Sera conveniente reescalarlos de la siguiente forma:
 
