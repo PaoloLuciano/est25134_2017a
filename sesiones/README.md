@@ -46,7 +46,9 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S10 - Clasificación no supervisada (basada en mezclas) -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_10.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_10.Rmd">[Rmd]</a>   
 
-* S11-12 - Taller de modelación -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_1112.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_1112.Rmd">[Rmd]</a>   
+* S11 - Taller de modelación: Matrices de covarianzas -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_11.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_11.Rmd">[Rmd]</a>   
+
+* S12 - Taller de modelación: Modelo gaussiano $p$-dimensional -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_11.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_11.Rmd">[Rmd]</a>   
 
 #### Modelos de redes / modelos graficos
 
