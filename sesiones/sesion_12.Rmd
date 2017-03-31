@@ -17,7 +17,7 @@ Dado un conjunto de datos $x_1,\ldots,x_n$ de vectores $p$-dimensionales, como e
 
 La distribucion de los datos, condicional en $\mu$ y $\Sigma$ es 
 $$
-\mathbb{P}(x_1,\ldots,x_n)
+\mathbb{P}(x_1,\ldots,x_n|\mu,\Sigma)
 = \prod_{i=1}^{n}N(x_i|\mu,\Sigma),
 $$
 si trabajamos con la matriz de convarianzas. Sin embargo, resulta conveniente trabajar con la reparametrizacion de la distriucion en terminos de la precision 
