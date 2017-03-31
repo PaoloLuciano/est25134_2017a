@@ -48,7 +48,7 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S11 - Taller de modelación: Matrices de covarianzas -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_11.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_11.Rmd">[Rmd]</a>   
 
-* S12 - Taller de modelación: Modelo gaussiano $p$-dimensional -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_11.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_11.Rmd">[Rmd]</a>   
+* S12 - Taller de modelación: Modelo gaussiano $p$-dimensional -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_12.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_12.Rmd">[Rmd]</a>   
 
 #### Modelos de redes / modelos graficos
 
