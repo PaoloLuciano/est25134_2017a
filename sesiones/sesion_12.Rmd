@@ -60,18 +60,18 @@ _Es decir, es la misma distribucion inicial actualizando sis correspondientes hi
 
 La forma particular de la distribucion es como sigue:
 $$
-p(\mu,\Lambda|x_1,\ldots,x_n)=p(\mu|\Lambda,x_1,\ldots,x_n)p(\Lambda,x_1,\ldots,x_n),
+p(\mu,\Lambda|x_1,\ldots,x_n)=p(\mu|\Lambda,x_1,\ldots,x_n)p(\Lambda|x_1,\ldots,x_n),
 $$
 donde 
 $$
 p(\mu|\Lambda,x_1,\ldots,x_n) = N(\mu|m_n,s_n\Lambda)\\
-p(\Lambda,x_1,\ldots,x_n) = Wi(\Lambda|a_n,S_n),
+p(\Lambda|x_1,\ldots,x_n) = Wi(\Lambda|a_n,S_n),
 $$
 donde 
 
 $$
 s_n = s_0 + n\\
-m_n = \frac{s_0 m_0 + n \bar{n}}{s_n} \\
+m_n = \frac{s_0 m_0 + n \bar{x}}{s_n} \\
 a_n = a_0 + n/2\\
 S_n = S_0 + (n/2)\left(\bar{S}+\frac{s_0}{s_n}(\bar{x}-m_0)(\bar{x}-m_0)'\right)
 $$
@@ -89,13 +89,14 @@ Con base en los datos $x_1,\ldots,x_n$, muestra de `entrenamiento`, se obtiene l
 $$
 \mathbb{P}(x_{n+1},\ldots,x_{n+m}|x-1,\ldots,x_n)
 = \int_{\mathbb{R}^{p}\times \mathbb{M}^{p\times p}}
-\prod_{j=1}^{m}N(x_{n+m}|\mu,\Lambda)p(\mu,\Lambda|x_1,\ldots,x_n)d\mu d\Lambda.
+\prod_{j=1}^{m}N(x_{n+m}|\mu,\Lambda)p(\mu,\Lambda|x_1,\ldots,x_n)d\mu d\Lambda,
 $$
+donde $\mathbb{M}^{p\times p}$ es el epsacio de matrices de dimension $p times p$ simétricas positivo definidas.
 
 En el caso donde $m=1$ la distribucion predictiva es $t$-$p$-dimensional, dada por
 
 $$
-\mathbb{P}(x_{n+1}|x-1,\ldots,x_n)
+\mathbb{P}(x_{n+1}|x_1,\ldots,x_n)
 = 
 t\left(x_{n+1}|\tilde{m}_n,\tilde{S}_n,\tilde{v}_n\right),
 $$
