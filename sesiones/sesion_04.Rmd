@@ -401,11 +401,10 @@ Exploraremos con detalle en la siguiente sesion estos datos, incluyendo tanto pa
 
 ```{r ex2_data}
 #		Datos
-setwd("/home/jcmo/JCMO.Trabajo/@Mis.Cursos/2017-A_Aprendizaje Estadistico/sesiones")
+rm(list=ls())
+githubURL <- "https://github.com/jcmartinezovando/est25134_2017a/raw/master/datos/SSVS_Probit_Data.Rdata"
 
-dde <- read.csv('SSVS_Probit_Data.csv', 
-                header = TRUE, sep = ",", 
-                quote="\"", dec=".", fill = TRUE)
+load(url(githubURL))
 
 #	Inputs
 # x = dde 	# dosis
