@@ -50,9 +50,13 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S12 - Taller de modelación: Modelo gaussiano $p$-dimensional -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_12.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_12.Rmd">[Rmd]</a>   
 
-#### Modelos de redes / modelos graficos
+* S13 - Reducción de dimensionalidad: Componentes principales y análisis de factores -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_13.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_13.Rmd">[Rmd]</a>   
 
-#### Modelos dinamicos
+#### Modelos de redes / modelos gráficos
+
+* S14 - Modelos gráficos: Introducción -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_14.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_14.Rmd">[Rmd]</a>   
+
+#### Modelos dinámicos
 
 
 
