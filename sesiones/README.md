@@ -46,15 +46,19 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S10 - Clasificación no supervisada (basada en mezclas) -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_10.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_10.Rmd">[Rmd]</a>   
 
+#### Reduccion de dimensioanlidad
+
 * S11 - Taller de modelación: Matrices de covarianzas -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_11.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_11.Rmd">[Rmd]</a>   
 
 * S12 - Taller de modelación: Modelo gaussiano $p$-dimensional -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_12.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_12.Rmd">[Rmd]</a>   
 
-* S13 - Reducción de dimensionalidad: Componentes principales y análisis de factores -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_13.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_13.Rmd">[Rmd]</a>   
+* S13 - Reducción de dimensionalidad: Componentes principales -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_13.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_13.Rmd">[Rmd]</a>   
+
+* S14 - Reducción de dimensionalidad: Análisis de factores -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_14.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_14.Rmd">[Rmd]</a>   
 
 #### Modelos de redes / modelos gráficos
 
-* S14 - Modelos gráficos: Introducción -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_14.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_14.Rmd">[Rmd]</a>   
+* S15 - Modelos gráficos: Introducción -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_15.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_15.Rmd">[Rmd]</a>   
 
 #### Modelos dinámicos
 
