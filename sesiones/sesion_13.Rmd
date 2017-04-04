@@ -58,7 +58,7 @@ El analisis de componentres principales PCA es una transformación lineal ortogo
 
 Un hecho importante: _PCA devuelve una nueva base que es una combinación lineal de la base original_. Esto limita el número de posible bases que PCA puede encontrar.
 
-Por lo tanto, si $X$ es el conjunto de datos original, $Y$ es el conjunto de datos transformado (ambos con el tamaño $m \times n$) y $P$ es la transformación lineal ($ m \times m $)
+Por lo tanto, si $X$ es el conjunto de datos original, $Y$ es el conjunto de datos transformado (ambos con el tamaño $m \times n$) y $P$ es la transformación lineal ($m \times m$), dada por
 $$
 PX = Y,
 $$
@@ -259,18 +259,19 @@ m <- red.weigth * imageData(pic)[,,1] + green.weigth * imageData(pic)[,,2] + blu
 image(m, col = grey(seq(0, 1, length = 256)))
 
 pca.m <- prcomp(m, scale=TRUE)
-# Let's plot the cumulative variance of all 465 components
+
 plot(summary(pca.m)$importance[3,], type="l", ylab="%variance explained", xlab="nth component (decreasing order)")
 abline(h=0.99,col="red")
-# to capture 99% of the variance, we need the first 165 components
+
 abline(v=165,col="red",lty=3)
 chosen.components <- 1:165
 feature.vector <- pca.m$rotation[,chosen.components]
-feature.vector[1:10,1:5] # show the initial values
-# make the final dataset (the compact dataset using only the chosen components)
+feature.vector[1:10,1:5]
+
 compact.data <- t(feature.vector) %*% t(m)
 dim(compact.data) # we cut lots of columns
-approx.m <- t(feature.vector %*% compact.data) # let's recover the data and show the approximation
+approx.m <- t(feature.vector %*% compact.data)
+
 dim(approx.m)
 image(approx.m, col = grey(seq(0, 1, length = 256)))
 ```
@@ -282,7 +283,6 @@ El PCA se obtiene a partir de los vectores propios de la matriz de covarianza, y
 *Kernel* PCA extiende PCA, imitando lo que obtendríamos si expandiéramos las características mediante transformaciones no lineales, y luego aplicamos PCA en este espacio de características transformado.
 
 
-
 ```{r}
 require("kernlab")
 
@@ -290,17 +290,15 @@ data(iris)
 test <- sample(1:150,20)
 
 kpc <- kpca(~., data=iris[-test,-5],
-            kernel = "rbfdot",  # Gaussian Radial Basis kernel function
+            kernel = "rbfdot",
             kpar   = list(sigma=0.2),
             features=2)
 
-head( pcv(kpc) )  # print the principal component vectors
+head( pcv(kpc) )
 
-# plot the data projection on the components
 plot(rotated(kpc), col=as.integer(iris[-test,5]),
 xlab="1st Principal Component",ylab="2nd Principal Component")
 
-# embed remaining points
 emb <- predict(kpc,iris[test,-5])
 points(emb, col=as.integer(iris[test,5]))
 ```
