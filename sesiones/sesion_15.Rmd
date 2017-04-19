@@ -1,0 +1,508 @@
+---
+title: "Sesion 15: Modelos gráficos: Introducción"
+author: "Juan Carlos Martinez-Ovando"
+date: "Primavera 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### **Resumen y objetivos**
+
+* Revisaremos la creacion de grafos en `R`, asi como algunas definiciones y propiedades fundamentales
+
+* Realizaremos uina inspeccion de algunas estadisticas basicas para modelos graficos
+
+* En la sesion de hoy emplearemos las librerias `diagram` e `igraph` de `R`:
+
+```
+install.packages("diagram")
+install.packages("igraph")
+```
+
+## Creacion de diagramas
+
+### a. `diagram`
+
+La libreria `diagram` permite crear objetos grafos en `R`. 
+
+Por *ejemplo*, creamos um grafico conectado con dos niveles donde los primeros 2 `nodos` comparten la misma línea y los 2 siguientes en la línea de abajo.
+
+```{r}
+require("diagram")
+
+names <- c("0", "0", "1", "1")
+M <- matrix(nrow = 4, ncol = 4, byrow = TRUE, data = 0)
+M[2, 1] <- M[4, 3] <- "Conector"
+
+par(mar = c(0, 0, 0, 0))
+plotmat(M, pos = c(2, 2), 
+           # pos - posicion del grafo
+           name = names, lwd = 1, curve = 0,
+           box.lwd = 1, cex.txt = 0.8, box.size = .1,
+           box.type = "circle", box.prop = 0.5)
+text(0.25,.5,"X"); text(.75,.5,"Y");
+```
+
+En el siguiente *ejemplo*, `pos` da las coordenadas para cada `nodo` (dentro del cuadro $[(0,0), (1,1)])$.
+
+```{r}
+names <- c("0", "1", "2", "1", "3", "4")
+M <- matrix(nrow = 6, ncol = 6, byrow = TRUE, data = 0)
+# Etiquetas de los conectores
+M[2, 1] <- "Conector_1" 
+M[3, 1] <- "Conector_1"
+M[5, 4] <- "Conector_1" 
+M[6, 4] <- "Conector_2"
+
+par(mar = c(0, 0, 0, 0))
+plotmat(M, pos = matrix(c(.25,.875, .75,.875, .75,.675, .25,.5, .75,.5, .75,.25), ncol=2, byrow=TRUE),
+           name = names, lwd = 1, curve = 0,
+           box.lwd = 1, cex.txt = 0.8, box.size = .1,
+           box.type = "circle", box.prop = 0.5)
+text(0.1,.5,"X"); text(.9,.5,"Y");
+```
+
+```{r}
+names <- c("0", "0", "1", "1")
+M <- matrix(nrow = 4, ncol = 4, byrow = TRUE, data = 0)
+M[2, 1] <- M[4, 3] <- "1-e"
+M[4, 1] <- M[2, 3] <- "e"
+
+par(mar = c(0, 0, 0, 0))
+plotmat(M, pos = c(2, 2), name = names, lwd = 1, curve = 0,
+           box.lwd = 1, cex.txt = 0.8, box.size = .1,
+           box.type = "circle", box.prop = 0.5)
+text(0.25,.5,"X"); text(.75,.5,"Y");
+```
+
+### b. `igraph`
+
+* Ejemplo: `graph.ring`
+
+```{r,fig.width = 12, fig.height = 6}
+require("igraph")
+
+par(mfrow=c(1,3))
+plot(graph.ring(5,circular=TRUE))
+plot(graph.ring(5,directed=TRUE,mutual=TRUE))
+plot(graph.ring(5,directed=TRUE,mutual=FALSE))
+
+```
+
+* Ejemplo: `graph.star`
+
+```{r,fig.width = 12, fig.height = 6}
+par(mfrow=c(1,3))
+plot(graph.star(7,mode="in"))
+plot(graph.star(7,mode="out"))
+plot(graph.star(7,mode="undirected"))
+```
+
+* Ejemplo `graph.lattice`
+
+En un `lattice` circular la diferencia de las coordenadas de los vértices se calcula modulo el tamaño de la red a lo largo de la dimensión dada por lo que, por ejemplo, en el `lattice` $5x3$ dos vértices de red bidimensional (1,1) y (1,3) también están conectados sólo Como (1,1) y (5,1).
+
+```{r}
+par(mfrow=c(1,1))
+plot(graph.lattice( c(3,3) ))
+plot(graph.lattice( c(3,3), directed=TRUE ))
+plot(graph.lattice( c(3,3), circular=TRUE ))
+plot(graph.tree(20))
+plot(graph.tree(20, children=3))
+plot(graph.tree(20, mode="out"))
+plot(graph.tree(20, mode="in"))
+plot(graph.tree(20, mode="undirected"))
+```
+
+---- 
+
+**Otros ejemplos**
+
+Una `matriz` o un `data frame` pueden ser empleados para definir una grafica, comos se muestra a continuacion.
+
+* En el siguiente diagrama, `g` es un objeto grafico definido por conectores direccionados.
+
+```{r}
+# Definimos la grafica
+#   Primera coordenada: Inicio
+#   Segunda coordenada: Fin
+#   Graficas direccionadas
+g <- graph( c(1,2, 
+              1,3, 
+              1,1, 
+              3,4, 
+              4,5, 
+              5,6),
+            directed=TRUE )
+# g es un objeto grafico
+plot(g)
+
+are.connected(g,1,3)
+are.connected(g,3,1)
+```
+
+* En este ejemplo, `g` es un objeto grafico dirigido saturado (i.e. todos los nodos estan conectados entree si).
+
+```{r}
+g <- graph.full(4, directed=TRUE)
+plot(g)
+is.directed(g)
+```
+
+* Este es un ejemplo de una grafica separada dirigida. El parametro `n` representa el numero de nodos.
+
+```{r}
+g <- graph( c(1,2, 
+              1,3, 
+              1,1, 
+              3,4, 
+              4,5, 
+              5,6), 
+            directed=TRUE, 
+            n=8 )
+plot(g)
+get.edgelist(g)
+```
+
+* Creamos un grafo a partir de una `matriz` de datos `edgelist`.
+
+```{r}
+# Matriz
+edgelist <- matrix(c(1:5,2:5,1),ncol=2)
+edgelist
+g <- graph(t(edgelist))
+plot(g)
+```
+
+* En este ejemplo definimos una matriz de adyacencia (conectividad entre `nodos`).
+
+```{r}
+set.seed(123)
+# mATRIZ DE ADYACENCIA
+adjacency.matrix <- matrix( (runif(64)>.5)+0, nrow=8 )
+adjacency.matrix
+g <- graph.adjacency(adjacency.matrix)
+plot(g)
+get.adjacency(g)
+```
+
+* Lo mismo puede hacerse a partir de un `data.frame`. Aqui definimos los `edges` en terminos la conectividad entre `factores` de un `data.frame` (en este caso descrito a traves de `df.edges`).
+
+```{r}
+# Data frame
+size <- 10
+df <- data.frame(name = letters[1:10],
+                 age = rpois(size,20),
+                 gender = sample(c("F","M"),size,replace=TRUE))
+df
+lapply(df, class)
+df.edges <- data.frame(origin = sample(letters[1:size],size,replace=TRUE),
+                       destiny = sample(letters[1:size],size,replace=TRUE),
+                       friend = sample(c("Y","N"),size,replace=TRUE))
+df.edges
+g <- graph.empty()
+g <- add.vertices(g, nrow(df), 
+                  name=as.character(df[,1]), 
+                  age=df[,2],
+                  gender=as.character(df[,3]))
+V(g)$name
+V(g)$age
+V(g)$gender
+# numero de vertices
+vcount(g) 
+ids <- 1:length(V(g)$name)
+names(ids) <- V(g)$name
+ids
+from <- as.character(df.edges[,1])
+to   <- as.character(df.edges[,2])
+edges <- matrix(c(ids[from], ids[to]), ncol=2)
+edges
+g <- add.edges(g, t(edges), 
+                  friend=as.character(df.edges[,3]))
+E(g)
+# numero de `edges`
+ecount(g)
+
+# edicion del grafo
+V(g)[gender=="F"]$color <- "green"
+V(g)[gender=="M"]$color <- "red"
+E(g)$color <- "black"
+E(g)[friend=="Y"]$color <- "red"
+E(g)$labels <- 1:ecount(g)
+E(g)$weight <- 1:2
+
+E(g)$names <- letters[1:10]
+
+igraph.options(arrow.width=13)
+plot(g)
+```
+
+* Otra edicion de la grafica...
+
+```
+# for all options check plot.igraph at reference manual
+
+plot.igraph(g, layout=layout.fruchterman.reingold,
+            vertex.label.dist=0,
+            vertex.label.cex=1:2,  
+            vertex.label.degree=pi/2,  
+            vertex.shape=c("square","circle"),
+            vertex.label.color=c(0,1),
+            edge.color=E(g)$color,
+            edge.width=E(g)$weight,
+            edge.label=E(g)$names, 
+            edge.label.cex=2, 
+            edge.lty=2, 
+            edge.curved=TRUE,
+            edge.loop.angle=pi/4,
+            edge.arrow.size=1,
+            frame=TRUE)
+```
+
+----
+
+Una grafica para el `barabasi.game` (i.e. algoritmo `Baranasi-Albert`), donde 
+
+
+ - `n`: Numero de vertices
+
+ - `m`: Constante numerica *out-degree of the vertices*
+
+ - `out.dist`: Numeric vector, the distiribution of the out-degree.
+
+ - `out.seq`: Numeric vector, the out-degree sequence of the vertices
+
+ - `out.pref`: Lógico, si es cierto, el grado total se utiliza para calcular la probabilidad de citación, de lo contrario se utiliza el grado
+
+ - `directed`: Lógico, si es cierto, se crtea un grafo dirigido
+
+```{r}
+g <- barabasi.game(100, directed=FALSE)
+d <- get.diameter(g)
+E(g)$color <- "SkyBlue2"
+E(g)$width <- 1
+E(g, path=d)$color <- "red"
+E(g, path=d)$width <- 2
+V(g)$labelcolor <- V(g)$color  <- "blue"
+V(g)[ d ]$labelcolor <- V(g)[ d ]$color <- "red"
+igraph.options(label.dist=0.4)
+
+plot(g, layout=layout.kamada.kawai, 
+     edge.color=E(g)$color,edge.width=E(g)$width,
+     vertex.color=V(g)$color, 
+     vertex.size=3)
+```
+
+-----------------------
+
+### **Mas sobre** `matrices de adyacencia`
+
+Consideramos la matriz de adyacencia `mat25.txt` del repositorio de datos en UCLA. Convertimos los datos en `mat25` como una matriz en `R`.
+
+`betweenness` es una medida de la centralidad de un vértice dentro de una gráfica (también hay `edge betweeness`, que no se discute aquí). `betweenness` cuantifica el número de veces que un `nodo` actúa como un puente a lo largo del camino más corto entre otros dos `nodos`.
+
+```{r}
+x <- read.table("http://www.ats.ucla.edu/stat/data/mat25.txt", header = FALSE)
+head(x)
+dim(x)
+
+network <- as.matrix(x)
+
+g1 <- graph.adjacency(network)  
+
+
+(b1 <- betweenness(g1, directed = FALSE))
+```
+
+En gráficos conectados hay una métrica de distancia natural entre todos los pares de nodos, definidos por la longitud de sus trayectorias más cortas. El `farness` de un `nodo` se define como la suma de sus distancias a todos los otros `nodos`, y su `closeness` se define como la inversa de `farness`.
+
+```{r}
+(c1 <- closeness(g1, mode = "out"))
+```
+
+El `degree` (o `valency`) de un vértice de un gráfico es el número de aristas incidentes al vértice, con bucles contados dos veces.
+
+```{r}
+(d1 <- degree(g1, mode = "out"))
+```
+
+Importamos tambien `edge list` del repositorio en UCLA. Lo importamos en formato `edgelist`.
+
+```{r}
+xlist <- read.graph("http://www.ats.ucla.edu/stat/data/elist1.txt", format = "edgelist")
+str(xlist)
+plot.igraph(xlist)
+```
+
+Observamos en nuestro objeto gráfico que tiene 7 vértices, aunque sólo enumeramos aristas que van desde los vértices 1 a 6. `R` hace algunas suposiciones a menos que se especifique lo contrario:
+ 
+Los vértices se indexan desde cero y pasan por el vértice con el número más alto en la lista con `edges`. Se puede especificar que su gráfico contenga más vértices que éste, pero no menos.
+
+Los `edges` son dirigidos, pasando del primer vértice al segundo.
+
+Así que vamos a modificar teniendo en cuenta que tenemos 8 vértices y el gráfico está indirectamente:
+
+```{r}
+xlist.8un <- read.graph("http://www.ats.ucla.edu/stat/data/elist1.txt", format = "edgelist", n = 8, directed = FALSE)
+str(xlist)
+summary(xlist)
+plot.igraph(xlist.8un)
+```
+
+**Comentarios:**
+
+* Nuestro primer gráfico tiene un vértice 0 sin conexión y flechas en los `edges`.  
+
+* Nuestro segundo grafo tiene sin conexión 0 y 7 vértices y sin flechas en los bordes (`edges`). 
+
+* También podríamos ingresar nuestros datos en un solo vector de índices de vértices donde un borde conecta la primera y segunda, tercera y cuarta, quinta y sexta entradas y así sucesivamente.
+
+```{r}
+g2 <- graph(c(1, 2, 2, 3, 2, 4, 2, 5, 4, 6, 5, 7, 7, 5))
+str(g2)
+plot.igraph(g2)
+```
+
+# Algoritmos sobre grafos
+
+Incluidos en la libreria `igraph`:
+
+A1. Clustering
+---
+
+* `membership`: vector numérico que da el identificador del clúster al que pertenece cada vértice.
+
+* `csize`: vector numérico que da los tamaños de los clusters.
+
+* `No`: constante numérica, número de clusters
+
+```{r}
+g <- erdos.renyi.game(20, 1/20)
+summary(g)
+plot(g)
+clusters(g)
+```
+
+A2. Estadisticas sobre grafos
+---
+
+Hay muchas estadísticas que podemos buscar para obtener una idea general de la forma de la gráfica. En el nivel más alto, podemos ver estadísticas resumidas del gráfico. Esto incluye:
+
+ -  Tamaño del gráfico (número de nodos y aristas)
+
+ - La densidad del gráfico mide el grafo denso ($|E|$ proporcional a $|V|^2$) o escaso ($|E|$ proporcional a $|V|$)
+
+ -  ¿Está la gráfica muy conectada (gran parte de los nodos puede llegar a los demás), o está desconectada (muchas islas)?
+ 
+ - El `diámetro` del gráfico mide la distancia más larga entre dos nodos cualesquiera
+
+ - `Medidas de reciprocidad` en un gráfico dirigido, ¿cuán simétricas son las relaciones?
+
+ -  Distribución de `degree`s de entrada / salida
+
+```{r}
+set.seed(121)
+# Random graph
+g <- erdos.renyi.game(200, 0.02)
+plot(g, layout=layout.fruchterman.reingold, 
+       vertex.label=NA, vertex.size=3)
+# Num. de nodes
+length(V(g))
+# Num. de edges
+length(E(g))
+# Densidad = Num.edges / Poss.edges
+graph.density(g)
+# Num. islands
+clusters(g)$no
+# Global cluster coefficient
+transitivity(g, type="global")
+# `Edge` conectividad
+edge.connectivity(g)
+# Adhesion
+graph.adhesion(g)
+# Diametro
+diameter(g)
+# Reciprocidad
+reciprocity(g)
+```
+
+
+```{r}
+# Create a random graph
+g <- erdos.renyi.game(9, 0.5)
+plot(g, layout=layout.fruchterman.reingold)
+# Compute the shortest path matrix
+shortest.paths(g)
+M <- matrix(rep(0, 81), nrow=9)
+for (i in 1:9) {
+  for (j in 1:9) {
+    if (i == j) {
+      M[i, j] <- -1
+    } else {
+      M[i, j] <- edge.connectivity(g, i, j)
+    }
+  }
+}
+M
+```
+
+A3. Medidas de centralidad
+---
+
+En el nivel de grano fino, podemos ver estadísticas de nodos individuales. Puntuación de centralidad medir la importancia social de un nodo en términos de cómo "central" se basa en una serie de medidas
+
+ -  La centralidad de grados otorga una puntuación más alta a un nodo que tiene un alto grado de entrada / salida
+ 
+ -  Centralidad de proximidad da una puntuación más alta a un nodo que tiene una distancia de trayecto corto a todos los otros nodos
+
+ - La centralidad entre estados da una puntuación más alta a un nodo que se encuentra en muchos caminos más cortos de otros pares de nodos
+
+ - La centralidad del vector propio otorga una puntuación más alta a un nodo si se conecta a muchos nodos de alta puntuación
+
+ - El coeficiente de cluster local mide cómo mis vecinos están interconectados entre sí, lo que significa que el nodo se vuelve menos importante.
+
+```{r}
+# Degree
+degree(g)
+# Closeness
+closeness(g)
+# Betweenness
+betweenness(g)
+# Local cluster coefficient
+transitivity(g, type="local")
+# Eigenvector centrality
+evcent(g)$vector
+ 
+order(degree(g))
+order(closeness(g))
+order(betweenness(g))
+order(evcent(g)$vector)
+```
+
+De sus estudios, Drew Conway ha encontrado que las personas con baja centralidad Eigenvector pero alta centralidad Betweenness son importantes guardianes, mientras que las personas con alta centralidad Eigenvector pero baja centralidad Betweenness tiene contacto directo con personas importantes. Por lo tanto, permite representar la centralidad de Eigenvector contra la centralidad de Betweenness.
+
+```{r}
+# Create a graph
+g1 <- barabasi.game(100, directed=F)
+g2 <- barabasi.game(100, directed=F)
+g <- g1 %u% g2
+lay <- layout.fruchterman.reingold(g)
+# Plot the eigevector and betweenness centrality
+plot(evcent(g)$vector, betweenness(g))
+text(evcent(g)$vector, betweenness(g), 0:100, 
+       cex=0.6, pos=4)
+V(g)[12]$color <- 'red'
+V(g)[8]$color <- 'green'
+plot(g, layout=lay, vertex.size=8,vertex.label.cex=0.6)
+```
+
+
+## Referencias
+
+* **Barber** -- Capitulo 15 
+
+* **Hastie et al** -- Seccion 14.5
+
+
