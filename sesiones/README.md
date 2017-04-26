@@ -64,7 +64,12 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S17 - Modelos gráficos: Operaciones -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_17.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_17.Rmd">[Rmd]</a>   
 
+* S18 - Modelos gráficos: Inferencia
+
 #### Modelos dinámicos
+
+* S20 - *Hidden Markov models*
+
 
 
 
