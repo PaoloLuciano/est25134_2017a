@@ -56,9 +56,13 @@ Funciones de distribución<a href="https://github.com/jcmartinezovando/est25134_
 
 * S14 - Reducción de dimensionalidad: Análisis de factores -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_14.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_14.Rmd">[Rmd]</a>   
 
+* S15 - Taller de computo -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_15.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_16.Rmd">[Rmd]</a>   
+
 #### Modelos de redes / modelos gráficos
 
-* S15 - Modelos gráficos: Introducción -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_15.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_15.Rmd">[Rmd]</a>   
+* S16 - Modelos gráficos: Introducción -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_16.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_16.Rmd">[Rmd]</a>   
+
+* S17 - Modelos gráficos: Operaciones -- <a href="http://jcmartinezovando.github.io/cursos/EST25134/sesion_17.html">[html]</a> -- <a href="https://github.com/jcmartinezovando/est25134_2017a/blob/master/sesiones/sesion_17.Rmd">[Rmd]</a>   
 
 #### Modelos dinámicos
 
